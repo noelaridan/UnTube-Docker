@@ -14,7 +14,7 @@ Import the project, and enter to the following directory:
 git clone https://github.com/noelaridan/UnTube-Docker.git
 cd UnTube-Docker
 ```
-Edit the `ALLOWED_HOSTS` in `webapp/UnTube/settings.py`
+Edit `ALLOWED_HOSTS` in the `webapp/UnTube/settings.py` file.
 ```bash
 nano webapp/UnTube/settings.py
 ```
@@ -24,8 +24,10 @@ For example:
 ```
 ALLOWED_HOSTS = ['127.0.0.1', 'your-domain.com']
 ```
-Then change the `YOUTUBE_V3_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_OAUTH_CLIENT_SECRET` in the `webapp/UnTube/secrets.py` file.
-
+Then change `YOUTUBE_V3_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_OAUTH_CLIENT_SECRET` in the `webapp/UnTube/secrets.py` file.
+```bash
+nano webapp/UnTube/secrets.py
+```
 For example:
 ```
 # Make sure you change these before production or to run this project on your own machine ;)
@@ -42,7 +44,7 @@ docker build -t untube .
 ```
 Then enter the following command to start the container by changing the path of the sqlite file:
 ```bash
-docker run -d -p 8000:8000 -v /{absolute-path}/db/db.sqlite3:/app/db.sqlite3 untube
+docker run -d --name untube -p 8000:8000 -v /{absolute-path}/db/db.sqlite3:/app/db.sqlite3 untube
 ```
 Finally, type in your search engine, the address corresponding to the one in the `settings.py` file.
 ## Using docker-compose (recommended)
